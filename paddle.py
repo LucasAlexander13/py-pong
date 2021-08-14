@@ -2,10 +2,10 @@ from turtle import Turtle
 
 class Paddle():
     def __init__(self, position):
+        self.paddle = []
         self.draw_paddle(position)
 
     def draw_paddle(self, position):
-        self.paddle = []
         for i in range(5):
             segment = Turtle()
             segment.shape('square')
