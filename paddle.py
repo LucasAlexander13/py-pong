@@ -20,3 +20,13 @@ class Paddle():
             elif position == 'left':
                 segment.goto(-360, i * 20)
                 self.paddle.append(segment)
+
+    def go_up(self):
+        for i in range(len(self.paddle)):
+            self.paddle[i].setheading(90)
+            self.paddle[i].forward(20)
+
+    def go_down(self):
+        for i in range(len(self.paddle)):
+            self.paddle[i].setheading(270)
+            self.paddle[i].forward(20)
