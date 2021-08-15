@@ -1,32 +1,25 @@
-from turtle import Turtle
+from turtle import Turtle, color
 
-class Paddle():
+class Paddle(Turtle):
     def __init__(self, position):
-        self.paddle = []
-        self.draw_paddle(position)
+        super().__init__()
+        # Defines paddle attributes
+        self.shape('square')
+        self.shapesize(stretch_wid=5, stretch_len=1)
+        self.color('white')
+        self.penup()
 
-    def draw_paddle(self, position):
-        for i in range(5):
-            segment = Turtle()
-            segment.shape('square')
-            segment.speed('fastest')
-            segment.color('white')
-            segment.penup()
-
-            if position == 'right':
-                segment.goto(360, i * -20)
-                self.paddle.append(segment)
-            
-            elif position == 'left':
-                segment.goto(-360, i * 20)
-                self.paddle.append(segment)
+        # Set initial position
+        if position == 'right':
+            self.goto(360, -20)
+        
+        elif position == 'left':
+            self.goto(-360, 20)
 
     def go_up(self):
-        for i in range(len(self.paddle)):
-            self.paddle[i].setheading(90)
-            self.paddle[i].forward(20)
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
     def go_down(self):
-        for i in range(len(self.paddle)):
-            self.paddle[i].setheading(270)
-            self.paddle[i].forward(20)
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
