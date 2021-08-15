@@ -27,9 +27,17 @@ while True:
     screen.onkey(l_player.go_up, 'w')
     screen.onkey(l_player.go_down, 's')
 
+
     while playing:
         try:
+            ball.move()
+
+            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 60):
+                ball.paddle_colide()
+            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 60):
+                ball.paddle_colide()
+            
             screen.update()
-        
+
         except:
-            break
+            raise
