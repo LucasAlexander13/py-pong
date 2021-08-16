@@ -1,5 +1,7 @@
 from turtle import Turtle
 from random import choice
+from screen import screen
+from time import sleep
 
 color = [
     'orange', 
@@ -23,13 +25,15 @@ class Ball(Turtle):
         self.shapesize(stretch_wid=0.8)
         self.color('white')
         self.penup()
-        self.velocity = 0.25
+        self.velocity = 0.30
         self.set_direction()
     
     def set_direction(self):
         # added a random ball direction when called
         self.x = choice(('positive', 'negative'))
         self.y = choice(('positive', 'negative'))
+        screen.update()
+        sleep(2)
     
     def move(self):
         if self.x == 'positive':
@@ -58,6 +62,11 @@ class Ball(Turtle):
             self.x = 'negative'
         elif self.x == 'negative':
             self.x = 'positive'
+    
+    def refresh(self):
+        self.color('white')
+        self.goto(0, 0)
+        self.set_direction()
     
     def pick_color(self):
         self.color(choice(color))
