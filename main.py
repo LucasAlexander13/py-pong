@@ -30,12 +30,19 @@ while True:
 
     while playing:
         try:
+            screen.update()
+            
             ball.move()
 
-            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 60):
+            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 45):
                 ball.paddle_colide()
-            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 60):
+            elif (ball.xcor() >= 370):
+                ball.refresh()
+                
+            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 45):
                 ball.paddle_colide()
+            elif (ball.xcor() <= -370):
+                ball.refresh()
             
             screen.update()
 
