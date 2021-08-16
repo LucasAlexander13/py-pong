@@ -5,8 +5,9 @@ class Paddle(Turtle):
         super().__init__()
         # Defines paddle attributes
         self.shape('square')
-        self.shapesize(stretch_wid=5, stretch_len=1)
+        self.shapesize(stretch_wid=1, stretch_len=5)
         self.color('white')
+        self.setheading(90)
         self.penup()
 
         # Set initial position
@@ -18,10 +19,8 @@ class Paddle(Turtle):
 
     def go_up(self):
         if self.ycor() <= 140:
-            new_y = self.ycor() + 20
-            self.goto(self.xcor(), new_y)
+            self.forward(20)
 
     def go_down(self):
         if self.ycor() >= -140:
-            new_y = self.ycor() - 20
-            self.goto(self.xcor(), new_y)
+            self.forward(-20)
