@@ -25,7 +25,7 @@ class Ball(Turtle):
         self.shapesize(stretch_wid=0.8)
         self.color('white')
         self.penup()
-        self.velocity = 0.30
+        self.velocity = 0.35
         self.set_direction()
     
     def set_direction(self):
@@ -67,6 +67,8 @@ class Ball(Turtle):
         self.color('white')
         self.goto(0, 0)
         self.set_direction()
+        self.velocity = 0.35
     
     def pick_color(self):
         self.color(choice(color))
+        self.velocity += 0.01
