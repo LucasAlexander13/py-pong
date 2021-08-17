@@ -16,7 +16,6 @@ while True:
 
 
     # Update screen and create a tag for loop
-    screen.update()
     playing = True
 
     screen.listen() # Listen to user input
@@ -37,17 +36,19 @@ while True:
 
             ball.move()
 
-            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 45):
-                ball.paddle_colide()
+            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 70):
+                if not(ball.xcor() >= 345):
+                    ball.paddle_colide()
             elif (ball.xcor() >= 370):
                 ball.refresh()
+                score.score[0] += 1
                 
-            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 45):
-                ball.paddle_colide()
+            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 70):
+                if not(ball.xcor() <= -345):
+                    ball.paddle_colide()
             elif (ball.xcor() <= -370):
                 ball.refresh()
-            
-            screen.update()
+                score.score[1] += 1
 
         except:
             raise
