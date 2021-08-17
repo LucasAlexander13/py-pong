@@ -1,5 +1,6 @@
 from screen import screen, set_screen, draw_edge
 from paddle import Paddle
+from score import Score
 from ball import Ball
 
 while True:
@@ -10,6 +11,7 @@ while True:
     # Create player paddles
     r_player = Paddle('right')
     l_player = Paddle('left')
+    score = Score()
     ball = Ball()
 
 
@@ -30,8 +32,9 @@ while True:
 
     while playing:
         try:
+            score.draw_score()
             screen.update()
-            
+
             ball.move()
 
             if (ball.xcor() >= 340) and (r_player.distance(ball) <= 45):
