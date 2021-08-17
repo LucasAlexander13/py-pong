@@ -16,3 +16,12 @@ class Score(Turtle):
             align ='center', 
             font = ('Bahnschrift', 36, 'normal')
             )
+    
+    def game_over(self, player):
+        self.clear()
+        self.goto(0, 0)
+        self.write(
+            arg = f'GAME OVER\n{player} wins', 
+            align ='center', 
+            font = ('Bahnschrift', 36, 'normal')
+            )

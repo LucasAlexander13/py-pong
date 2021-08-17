@@ -36,19 +36,29 @@ while True:
 
             ball.move()
 
-            if (ball.xcor() >= 340) and (r_player.distance(ball) <= 70):
-                if not(ball.xcor() >= 345):
-                    ball.paddle_colide()
-            elif (ball.xcor() >= 370):
-                ball.refresh()
-                score.score[0] += 1
-                
-            elif (ball.xcor() <= -340) and (l_player.distance(ball) <= 70):
+            if ball.xcor() <= -340 and ball.distance(l_player) < 70:
                 if not(ball.xcor() <= -345):
                     ball.paddle_colide()
             elif (ball.xcor() <= -370):
-                ball.refresh()
+
                 score.score[1] += 1
+                if score.score[1] == 5:
+                    score.game_over("Player 1")
+                else:
+                    ball.refresh()
+
+            if ball.xcor() >= 340 and ball.distance(r_player) < 70:
+                if not(ball.xcor() >= 345):
+                    ball.paddle_colide()
+            elif (ball.xcor() >= 370):
+
+                score.score[0] += 1
+                if score.score[0] == 5:
+                    score.game_over("Player 2")
+                else:
+                    ball.refresh()
+                
+
 
         except:
             raise
