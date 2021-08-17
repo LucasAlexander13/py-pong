@@ -12,6 +12,7 @@ while True:
     r_player = Paddle('right')
     l_player = Paddle('left')
     score = Score()
+    score.draw_score()
     ball = Ball()
 
 
@@ -39,26 +40,30 @@ while True:
             if ball.xcor() <= -340 and ball.distance(l_player) < 70:
                 if not(ball.xcor() <= -345):
                     ball.paddle_colide()
-            elif (ball.xcor() <= -370):
+            elif (ball.xcor() <= -360):
 
                 score.score[1] += 1
                 if score.score[1] == 5:
-                    score.game_over("Player 1")
+                    score.game_over("PLAYER 2")
+                    screen.clearscreen()
+                    playing = False
                 else:
                     ball.refresh()
 
             if ball.xcor() >= 340 and ball.distance(r_player) < 70:
                 if not(ball.xcor() >= 345):
                     ball.paddle_colide()
-            elif (ball.xcor() >= 370):
+            elif (ball.xcor() >= 360):
 
                 score.score[0] += 1
                 if score.score[0] == 5:
-                    score.game_over("Player 2")
+                    score.game_over("PLAYER 1")
+                    screen.clearscreen()
+                    playing = False
                 else:
                     ball.refresh()
                 
 
 
         except:
-            raise
+            break

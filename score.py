@@ -1,4 +1,5 @@
 from turtle import Turtle
+from time import sleep
 
 class Score(Turtle):
     def __init__(self):
@@ -19,9 +20,20 @@ class Score(Turtle):
     
     def game_over(self, player):
         self.clear()
-        self.goto(0, 0)
+
         self.write(
-            arg = f'GAME OVER\n{player} wins', 
+            arg = f'{self.score[0]}  :  {self.score[1]}', 
             align ='center', 
             font = ('Bahnschrift', 36, 'normal')
             )
+
+        self.goto(0, -40)
+
+        self.write(
+            arg = f'  GAME OVER\n{player} WINS', 
+            align ='center', 
+            font = ('Bahnschrift', 36, 'normal')
+            )
+        sleep(3)
+
+        self.clear()
