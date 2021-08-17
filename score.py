@@ -12,7 +12,7 @@ class Score(Turtle):
     def draw_score(self):
         self.clear()
         self.write(
-            arg = f'{self.score[0]}   {self.score[1]}', 
+            arg = f'{self.score[0]}  :  {self.score[1]}', 
             align ='center', 
-            font = ('Bahnschrift', 24, 'normal')
+            font = ('Bahnschrift', 36, 'normal')
             )
